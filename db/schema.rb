@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_134713) do
+ActiveRecord::Schema.define(version: 2021_03_03_193615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 2020_12_29_134713) do
     t.string "title_url", limit: 255
     t.integer "position", null: false
     t.string "slug"
+    t.string "indentifier_uuid", default: "", null: false
+    t.integer "path_id"
+    t.index ["indentifier_uuid"], name: "index_courses_on_indentifier_uuid"
     t.index ["slug"], name: "index_courses_on_slug"
   end
 
@@ -96,17 +99,11 @@ ActiveRecord::Schema.define(version: 2020_12_29_134713) do
     t.boolean "accepts_submission", default: false, null: false
     t.boolean "has_live_preview", default: false, null: false
     t.boolean "choose_path_lesson", default: false, null: false
+    t.string "indentifier_uuid", default: "", null: false
+    t.index ["indentifier_uuid"], name: "index_lessons_on_indentifier_uuid"
     t.index ["position"], name: "index_lessons_on_position"
     t.index ["slug", "section_id"], name: "index_lessons_on_slug_and_section_id", unique: true
     t.index ["url"], name: "index_lessons_on_url"
-  end
-
-  create_table "path_courses", id: :serial, force: :cascade do |t|
-    t.integer "path_id"
-    t.integer "course_id"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "path_prerequisites", force: :cascade do |t|
@@ -127,6 +124,8 @@ ActiveRecord::Schema.define(version: 2020_12_29_134713) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.boolean "default_path", default: false, null: false
+    t.string "indentifier_uuid", default: "", null: false
+    t.index ["indentifier_uuid"], name: "index_paths_on_indentifier_uuid"
     t.index ["slug"], name: "index_paths_on_slug", unique: true
   end
 
@@ -160,7 +159,9 @@ ActiveRecord::Schema.define(version: 2020_12_29_134713) do
     t.datetime "updated_at", null: false
     t.string "title_url", limit: 255
     t.text "description"
+    t.string "indentifier_uuid", default: "", null: false
     t.index ["course_id"], name: "index_sections_on_course_id"
+    t.index ["indentifier_uuid"], name: "index_sections_on_indentifier_uuid"
     t.index ["position"], name: "index_sections_on_position"
     t.index ["title_url"], name: "index_sections_on_title_url"
   end

@@ -1,8 +1,7 @@
 class Course < ApplicationRecord
   extend FriendlyId
 
-  has_many :path_courses
-  has_many :paths, through: :path_courses
+  has_many :paths
   has_many :sections, -> { order(:position) }
   has_many :lessons, through: :sections
 
