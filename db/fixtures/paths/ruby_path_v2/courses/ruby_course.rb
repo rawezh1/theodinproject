@@ -8,7 +8,7 @@ course = Course.seed(:indentifier_uuid) do |course|
   course.description = 'The Ruby Course Revised'
   course.position = 1
   course.path_id = @path.first.id
-  course.indentifier_uuid = '43854e72-54c3-4fca-9be3-73d2281682de'
+  course.indentifier_uuid = '24d1e8dd-0b2f-468a-9152-2efc2abce72e'
 end
 @path_courses << course
 
@@ -17,7 +17,7 @@ end
 # +++++++++++
 
 section = Section.seed(:indentifier_uuid) do |section|
-  section.indentifier_uuid = '79e3cd97-9e46-40f4-8927-57cc85999913'
+  section.indentifier_uuid = '5bd7b45a-d786-4149-b55a-f83516930b69'
   section.title = 'TDD'
   section.title_url = 'TDD'.parameterize
   section.position = 1
@@ -37,7 +37,7 @@ course_lessons << Lesson.seed(:indentifier_uuid, :section_id, [
 # +++++++++++
 
 section = Section.seed(:indentifier_uuid) do |section|
-  section.indentifier_uuid = '67c481ab-0849-47a6-849e-f2e6f32957fa'
+  section.indentifier_uuid = '190a66fe-628c-415a-91a4-b15b18d52a7b'
   section.title = 'Conclusion'
   section.title_url = 'Conclusion'.parameterize
   section.position = 2

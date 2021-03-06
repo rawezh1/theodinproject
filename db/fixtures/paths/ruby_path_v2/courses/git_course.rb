@@ -4,7 +4,7 @@ course = Course.seed(:indentifier_uuid) do |course|
   course.description = 'The Git Course'
   course.position = 2
   course.path_id = @path.first.id
-  course.indentifier_uuid = 'c87cde4e-2730-42d6-ad39-4ee249d3adde'
+  course.indentifier_uuid = '8ba6cc77-f545-4bc0-8689-e4d217f89df1'
 end
 
 # +++++++++++
@@ -12,7 +12,7 @@ end
 # +++++++++++
 
 section = Section.seed(:indentifier_uuid) do |section|
-  section.indentifier_uuid = '74e6bb05-2537-4c0a-b1ca-3dc721284ada'
+  section.indentifier_uuid = '06e718f4-5620-407d-83db-f709e64fc83c'
   section.title = 'Git in the real world'
   section.title_url = 'Git in the real world'.parameterize
   section.position = 1
