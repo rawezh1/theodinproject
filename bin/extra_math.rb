@@ -6,10 +6,3 @@ def cos(a)
     sum
 end
 
-def fact(n)
-    result = 1
-    for i in 0..n do
-        result *= i
-    end
-    result
-end
